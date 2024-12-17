@@ -51,9 +51,14 @@ export default function DocumentsPage() {
       // Create a link element
       const link = document.createElement('a');
       link.href = url;
+      // Extract the file extension from the URL
+      const urlParts = fileUrl.split('.');
+      const fileExtension = urlParts[urlParts.length - 1]; // Get last part after dot (e.g., "docx")
+      // Combine desired file name with the original extension
+      const finalFileName = `${filename}.${fileExtension}`;
 
       // Set the desired file name
-      link.setAttribute('download', filename);
+      link.setAttribute('download', finalFileName);
 
       // Append to the document and trigger the download
       document.body.appendChild(link);
